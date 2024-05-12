@@ -1,13 +1,16 @@
 //
-//  StubDashboardViewModel.swift
+//  StubCreditViewModel.swift
 //  Clear_Test
+//
+//  This is a stubbing class used in previews and UITesting
+//  This is used to stub CreditViewModel
 //
 //  Created by Josue Muhiri Cizungu on 2024/05/12.
 //
 
 import Foundation
 
-class StubDashboardViewModel: DashboardViewModelInterface {
+class StubCreditViewModel: CreditViewModelInterface {
     var error: Error? = NetworkError.responseError(StatusCode: 409)
     var coachingSummary: CoachingSummaryModel?
     var creditReportInfo: CreditReportInfoModel?
@@ -16,8 +19,8 @@ class StubDashboardViewModel: DashboardViewModelInterface {
     var creditData: CreditModel?
     func fetchCreditData() {}
     
-    func stubData() {
-        creditData = StubCreditDetailModel().creditData
+    func filldata() {
+        creditData = StubCreditModel().creditData
         if let creditScore = creditData?.creditReportInfo?.score {
             self.creditScore = creditScore
         }
@@ -34,7 +37,7 @@ class StubDashboardViewModel: DashboardViewModelInterface {
     }
     
     init() {
-        stubData()
+        filldata()
     }
     
     init(error: Error) {
@@ -47,7 +50,7 @@ class StubDashboardViewModel: DashboardViewModelInterface {
     }
     
     init(emptyCreditReportInfo: Bool, emptyCoachingSummary: Bool) {
-        stubData()
+        filldata()
         if emptyCoachingSummary {
             self.coachingSummary = nil
             self.creditData?.coachingSummary = nil

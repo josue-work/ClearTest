@@ -2,101 +2,107 @@
 //  CreditReportInfoView.swift
 //  Clear_Test
 //
+//  This view has the list for the credit report info model
+//  within the big credit model
+//
 //  Created by Josue Muhiri Cizungu on 2024/05/12.
 //
 
 import SwiftUI
 
 struct CreditReportInfoView<CreditReportData: CreditReportInfoViewInterface>: View {
+    
+    // MARK: - Variables
     @EnvironmentObject var data: CreditReportData
     
+    // MARK: - Body View
     var body: some View {
         Group {
             if let creditReportInfo = data.creditReportInfo {
                 List {
                     if let score = creditReportInfo.score {
-                        CreditDetailListItem(keyString: String(localized: "score"), valueString: score.description)
+                        ListItem(keyString: String(localized: "score"), valueString: score.description)
                     }
                     if let scoreBand = creditReportInfo.scoreBand {
-                        CreditDetailListItem(keyString: String(localized: "score_band"), valueString: scoreBand.description)
+                        ListItem(keyString: String(localized: "score_band"), valueString: scoreBand.description)
                     }
                     if let clientRef = creditReportInfo.clientRef {
-                        CreditDetailListItem(keyString: String(localized: "client_reference"), valueString: clientRef.description)
+                        ListItem(keyString: String(localized: "client_reference"), valueString: clientRef.description)
                     }
                     if let status = creditReportInfo.status {
-                        CreditDetailListItem(keyString: String(localized: "score"), valueString: status.description)
+                        ListItem(keyString: String(localized: "score"), valueString: status.description)
                     }
                     if let maxScoreValue = creditReportInfo.maxScoreValue {
-                        CreditDetailListItem(keyString: String(localized: "max_score"), valueString: maxScoreValue.description)
+                        ListItem(keyString: String(localized: "max_score"), valueString: maxScoreValue.description)
                     }
                     if let minScoreValue = creditReportInfo.minScoreValue {
-                        CreditDetailListItem(keyString: String(localized: "minimum_score"), valueString: minScoreValue.description)
+                        ListItem(keyString: String(localized: "minimum_score"), valueString: minScoreValue.description)
                     }
                     if let monthsSinceLastDefaulted = creditReportInfo.monthsSinceLastDefaulted {
-                        CreditDetailListItem(keyString: String(localized: "months_since_last_defaulted"), valueString: monthsSinceLastDefaulted.description)
+                        ListItem(keyString: String(localized: "months_since_last_defaulted"), valueString: monthsSinceLastDefaulted.description)
                     }
                     if let hasEverDefaulted = creditReportInfo.hasEverDefaulted {
-                        CreditDetailListItem(keyString: String(localized: "has_ever_defaulted"), valueString: hasEverDefaulted.description)
+                        ListItem(keyString: String(localized: "has_ever_defaulted"), valueString: hasEverDefaulted.description)
                     }
                     if let monthsSinceLastDelinquent = creditReportInfo.monthsSinceLastDelinquent {
-                        CreditDetailListItem(keyString: String(localized: "months_since_last_delinquent"), valueString: monthsSinceLastDelinquent.description)
+                        ListItem(keyString: String(localized: "months_since_last_delinquent"), valueString: monthsSinceLastDelinquent.description)
                     }
                     if let hasEverBeenDelinquent = creditReportInfo.hasEverBeenDelinquent {
-                        CreditDetailListItem(keyString: String(localized: "has_ever_been_delinquent"), valueString: hasEverBeenDelinquent.description)
+                        ListItem(keyString: String(localized: "has_ever_been_delinquent"), valueString: hasEverBeenDelinquent.description)
                     }
                     if let percentageCreditUsed = creditReportInfo.percentageCreditUsed {
-                        CreditDetailListItem(keyString: String(localized: "percentage_credit_used"), valueString: percentageCreditUsed.description)
+                        ListItem(keyString: String(localized: "percentage_credit_used"), valueString: percentageCreditUsed.description)
                     }
                     if let percentageCreditUsedDirectionFlag = creditReportInfo.percentageCreditUsedDirectionFlag {
-                        CreditDetailListItem(keyString: String(localized: "percentage_credit_used_direction_flag"), valueString: percentageCreditUsedDirectionFlag.description)
+                        ListItem(keyString: String(localized: "percentage_credit_used_direction_flag"), valueString: percentageCreditUsedDirectionFlag.description)
                     }
                     if let changedScore = creditReportInfo.changedScore {
-                        CreditDetailListItem(keyString: String(localized: "changed_score"), valueString: changedScore.description)
+                        ListItem(keyString: String(localized: "changed_score"), valueString: changedScore.description)
                     }
                     if let currentShortTermDebt = creditReportInfo.currentShortTermDebt {
-                        CreditDetailListItem(keyString: String(localized: "current_short_term_debt"), valueString: currentShortTermDebt.description)
+                        ListItem(keyString: String(localized: "current_short_term_debt"), valueString: currentShortTermDebt.description)
                     }
                     if let currentShortTermNonPromotionalDebt = creditReportInfo.currentShortTermNonPromotionalDebt {
-                        CreditDetailListItem(keyString: String(localized: "current_short_term_non_promotional_debt"), valueString: currentShortTermNonPromotionalDebt.description)
+                        ListItem(keyString: String(localized: "current_short_term_non_promotional_debt"), valueString: currentShortTermNonPromotionalDebt.description)
                     }
                     if let currentShortTermCreditLimit = creditReportInfo.currentShortTermCreditLimit {
-                        CreditDetailListItem(keyString: String(localized: "current_short_term_credit_limit"), valueString: currentShortTermCreditLimit.description)
+                        ListItem(keyString: String(localized: "current_short_term_credit_limit"), valueString: currentShortTermCreditLimit.description)
                     }
                     if let currentShortTermCreditUtilisation = creditReportInfo.currentShortTermCreditUtilisation {
-                        CreditDetailListItem(keyString: String(localized: "current_short_term_credit_utilisation"), valueString: currentShortTermCreditUtilisation.description)
+                        ListItem(keyString: String(localized: "current_short_term_credit_utilisation"), valueString: currentShortTermCreditUtilisation.description)
                     }
                     if let changeInShortTermDebt = creditReportInfo.changeInShortTermDebt {
-                        CreditDetailListItem(keyString: String(localized: "change_in_short_term_debt"), valueString: changeInShortTermDebt.description)
+                        ListItem(keyString: String(localized: "change_in_short_term_debt"), valueString: changeInShortTermDebt.description)
                     }
                     if let currentLongTermDebt = creditReportInfo.currentLongTermDebt {
-                        CreditDetailListItem(keyString: String(localized: "current_long_term_debt"), valueString: currentLongTermDebt.description)
+                        ListItem(keyString: String(localized: "current_long_term_debt"), valueString: currentLongTermDebt.description)
                     }
                     if let currentLongTermNonPromotionalDebt = creditReportInfo.currentLongTermNonPromotionalDebt {
-                        CreditDetailListItem(keyString: String(localized: "current_long_term_non_promotional_debt"), valueString: currentLongTermNonPromotionalDebt.description)
+                        ListItem(keyString: String(localized: "current_long_term_non_promotional_debt"), valueString: currentLongTermNonPromotionalDebt.description)
                     }
                     if let currentLongTermCreditLimit = creditReportInfo.currentLongTermCreditLimit {
-                        CreditDetailListItem(keyString: String(localized: "current_long_term_credit_limit"), valueString: currentLongTermCreditLimit.description)
+                        ListItem(keyString: String(localized: "current_long_term_credit_limit"), valueString: currentLongTermCreditLimit.description)
                     }
                     if let currentLongTermCreditUtilisation = creditReportInfo.currentLongTermCreditUtilisation {
-                        CreditDetailListItem(keyString: String(localized: "current_long_term_credit_utilisation"), valueString: currentLongTermCreditUtilisation.description)
+                        ListItem(keyString: String(localized: "current_long_term_credit_utilisation"), valueString: currentLongTermCreditUtilisation.description)
                     }
                     if let changeInLongTermDebt = creditReportInfo.changeInLongTermDebt {
-                        CreditDetailListItem(keyString: String(localized: "change_in_long_term_debt"), valueString: changeInLongTermDebt.description)
+                        ListItem(keyString: String(localized: "change_in_long_term_debt"), valueString: changeInLongTermDebt.description)
                     }
                     if let numPositiveScoreFactors = creditReportInfo.numPositiveScoreFactors {
-                        CreditDetailListItem(keyString: String(localized: "number_of_positive_score_factors"), valueString: numPositiveScoreFactors.description)
+                        ListItem(keyString: String(localized: "number_of_positive_score_factors"), valueString: numPositiveScoreFactors.description)
                     }
                     if let numNegativeScoreFactors = creditReportInfo.numNegativeScoreFactors {
-                        CreditDetailListItem(keyString: String(localized: "number_of_negative_score_factors"), valueString: numNegativeScoreFactors.description)
+                        ListItem(keyString: String(localized: "number_of_negative_score_factors"), valueString: numNegativeScoreFactors.description)
                     }
                     if let equifaxScoreBand = creditReportInfo.equifaxScoreBand {
-                        CreditDetailListItem(keyString: String(localized: "equifax_score_band"), valueString: equifaxScoreBand.description)
+                        ListItem(keyString: String(localized: "equifax_score_band"), valueString: equifaxScoreBand.description)
                     }
                     if let equifaxScoreBandDescription = creditReportInfo.equifaxScoreBandDescription {
-                        CreditDetailListItem(keyString: String(localized: "equifax_score_band_description"), valueString: equifaxScoreBandDescription.description)
+                        ListItem(keyString: String(localized: "equifax_score_band_description"), valueString: equifaxScoreBandDescription.description)
                     }
                     if let daysUntilNextReport = creditReportInfo.daysUntilNextReport {
-                        CreditDetailListItem(keyString: String(localized: "days_until_next_report"), valueString: daysUntilNextReport.description)
+                        ListItem(keyString: String(localized: "days_until_next_report"), valueString: daysUntilNextReport.description)
                     }
                 }
             } else {

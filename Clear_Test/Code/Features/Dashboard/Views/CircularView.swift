@@ -2,16 +2,21 @@
 //  CircularView.swift
 //  Clear_Test
 //
+//  This is a subview used by the dashboard
+//  This creates the circle view with the score rating
+//
 //  Created by Josue Muhiri Cizungu on 2024/05/12.
 //
 
 import SwiftUI
 
 struct CircularView<CircularViewDataModel: CircularViewInterface>: View {
+    
+    // MARK: - Variables
     @EnvironmentObject var data: CircularViewDataModel
     @State var size: CGFloat = 250
     
-    // MARK: - View
+    // MARK: - Body view
     var body: some View {
         VStack {
             Text(LocalizedStringKey("dashboard_title_part_one"))

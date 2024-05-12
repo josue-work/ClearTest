@@ -2,23 +2,29 @@
 //  CreditDetailView.swift
 //  Clear_Test
 //
+//  This view has the list for the credit model
+//
 //  Created by Josue Muhiri Cizungu on 2024/05/12.
 //
 
 import SwiftUI
 
 struct CreditDetailView<CreditDataModel: CreditModelInterface & CreditReportInfoViewInterface & CoachingSummaryViewInterface>: View {
+    
+    
+    // MARK: - Variables
     @EnvironmentObject var data: CreditDataModel
     @Binding var selectedView: MainNavigationPaths?
     @State private var presentedPath = NavigationPath()
     
+    // MARK: - Body View
     var body: some View {
         NavigationStack(path: $presentedPath) {
             Group {
                 if let creditData = data.creditData {
                     List {
                         if let accountIDVStatus = creditData.accountIDVStatus {
-                            CreditDetailListItem(keyString: String(localized: "account_IDV_status"), valueString: accountIDVStatus.description)
+                            ListItem(keyString: String(localized: "account_IDV_status"), valueString: accountIDVStatus.description)
                         }
                         if let _ = creditData.creditReportInfo {
                             NavigationLink(value: DetailsNavigationPaths.CreditReportInfo, label: {
@@ -26,10 +32,10 @@ struct CreditDetailView<CreditDataModel: CreditModelInterface & CreditReportInfo
                             })
                         }
                         if let dashboardStatus = creditData.dashboardStatus {
-                            CreditDetailListItem(keyString: String(localized:"dashboard_status"), valueString: dashboardStatus.description)
+                            ListItem(keyString: String(localized:"dashboard_status"), valueString: dashboardStatus.description)
                         }
                         if let personaType = creditData.personaType {
-                            CreditDetailListItem(keyString: String(localized: "persona_type"), valueString: personaType.description)
+                            ListItem(keyString: String(localized: "persona_type"), valueString: personaType.description)
                         }
                         if let _ = creditData.coachingSummary {
                             NavigationLink(value: DetailsNavigationPaths.CoachingSummary, label: {
@@ -37,7 +43,7 @@ struct CreditDetailView<CreditDataModel: CreditModelInterface & CreditReportInfo
                             })
                         }
                         if let augmentedCreditScore = creditData.augmentedCreditScore {
-                            CreditDetailListItem(keyString: String(localized: "augmented_credit_score"), valueString: augmentedCreditScore.description)
+                            ListItem(keyString: String(localized: "augmented_credit_score"), valueString: augmentedCreditScore.description)
                         }
                     }
                     .navigationDestination(for: DetailsNavigationPaths.self) { detailType in
@@ -73,9 +79,9 @@ struct CreditDetailView<CreditDataModel: CreditModelInterface & CreditReportInfo
 }
 
 #Preview {
-    CreditDetailView<StubCreditDetailModel>(selectedView: {
+    CreditDetailView<StubCreditModel>(selectedView: {
         @State var selectedView: MainNavigationPaths?
         return $selectedView
     }())
-        .environmentObject(StubCreditDetailModel())
+        .environmentObject(StubCreditModel())
 }

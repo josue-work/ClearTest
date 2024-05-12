@@ -11,13 +11,13 @@ extension NetworkError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .badURL:
-            return NSLocalizedString(String(localized: "url_entered_is_not_valid"), comment: String(localized: "bad_url"))
+            return String(localized: "url_is_invalid")
         case .responseError:
-            return NSLocalizedString(String(localized: "unhandled_status_code"), comment: String(localized: "bad_status_code"))
+            return String(localized: "network_error")
         case .unknown:
-            return NSLocalizedString(String(localized: "unknown_error"), comment: String(localized: "unknown_error"))
+            return String(localized: "unknown_error")
         case .decode:
-            return NSLocalizedString(String(localized: "error_decoding"), comment: String(localized: "unable_to_decode_response"))
+            return String(localized: "unable_to_decode_response")
         }
     }
 }

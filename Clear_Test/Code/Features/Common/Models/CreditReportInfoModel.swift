@@ -2,12 +2,13 @@
 //  CreditReportInfoModel.swift
 //  Clear_Test
 //
+//  Model for CreditReportInfo inside Credit report model from API
+//
 //  Created by Josue Muhiri Cizungu on 2024/05/12.
 //
 
 import Foundation
 
-// Model for CreditReportInfo inside Credit report model from API
 struct CreditReportInfoModel: Codable, Hashable, Equatable {
     var score: Int?
     var scoreBand: Int?

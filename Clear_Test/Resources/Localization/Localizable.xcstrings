@@ -610,17 +610,6 @@
         }
       }
     },
-    "unhandled_status_code" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unhandled Status Code"
-          }
-        }
-      }
-    },
     "unknown_error" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -628,17 +617,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Unknown Error"
-          }
-        }
-      }
-    },
-    "url_entered_is_not_valid" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "URL entered is not valid"
           }
         }
       }

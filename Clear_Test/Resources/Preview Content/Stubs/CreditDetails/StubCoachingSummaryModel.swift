@@ -2,6 +2,9 @@
 //  StubCoachingSummaryModel.swift
 //  Clear_Test
 //
+//  This is a stubbing class used in previews and UITesting
+//  This is used to stub coaching summary model
+//
 //  Created by Josue Muhiri Cizungu on 2024/05/12.
 //
 

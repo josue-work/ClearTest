@@ -2,17 +2,22 @@
 //  DashboardView.swift
 //  Clear_Test
 //
+//  This is the first view that appears on the app
+//  This contains the circle view with the credit score and rating
+//
 //  Created by Josue Muhiri Cizungu on 2024/05/12.
 //
 
 import SwiftUI
 
-struct DashboardView<ViewModel: DashboardViewModelInterface>: View {
+struct DashboardView<ViewModel: CreditViewModelInterface>: View {
+    
+    // MARK: - Variables
     @EnvironmentObject var viewModel: ViewModel
     @Binding var selectedView: MainNavigationPaths?
     @State private var presentedPath = NavigationPath()
     
-    // MARK: - View
+    // MARK: - Body view
     var body: some View {
         
         NavigationStack(path: $presentedPath) {
@@ -20,16 +25,12 @@ struct DashboardView<ViewModel: DashboardViewModelInterface>: View {
                 ErrorView<ViewModel>()
                     .environmentObject(viewModel)
             } else {
-//                NavigationLink {
-//                    selectedView = .Details
-//                } label: {
-                    CircularView<ViewModel>()
-                        .environmentObject(viewModel)
-                        .onTapGesture {
-                            selectedView = .Details
-                        }
-                        .tag("CircularView")
-//                }
+                CircularView<ViewModel>()
+                    .environmentObject(viewModel)
+                    .onTapGesture {
+                        selectedView = .Details
+                    }
+                    .tag("CircularView")
             }
         }
         .toolbar {
@@ -47,9 +48,9 @@ struct DashboardView<ViewModel: DashboardViewModelInterface>: View {
 }
 
 #Preview {
-    DashboardView<StubDashboardViewModel>(selectedView: {
+    DashboardView<StubCreditViewModel>(selectedView: {
         @State var selectedMainNav: MainNavigationPaths?
          return $selectedMainNav
      }())
-        .environmentObject(StubDashboardViewModel())
+        .environmentObject(StubCreditViewModel())
 }

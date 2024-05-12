@@ -1,13 +1,17 @@
 //
-//  StubCreditDetailModel.swift
+//  StubCreditModel.swift
 //  Clear_Test
+//
+//  This is a stubbing class used in previews and UITesting
+//  This is used to stub credit model
 //
 //  Created by Josue Muhiri Cizungu on 2024/05/12.
 //
 
 import Foundation
 
-class StubCreditDetailModel: CreditModelInterface {
+
+class StubCreditModel: CreditModelInterface {
     var coachingSummary: CoachingSummaryModel?
     var creditReportInfo: CreditReportInfoModel?
     var creditData: CreditModel?

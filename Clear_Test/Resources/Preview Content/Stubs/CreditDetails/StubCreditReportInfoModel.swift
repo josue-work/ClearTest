@@ -2,6 +2,9 @@
 //  StubCreditReportInfoModel.swift
 //  Clear_Test
 //
+//  This is a stubbing class used in previews and UITesting
+//  This is used to stub credit report info model
+//
 //  Created by Josue Muhiri Cizungu on 2024/05/12.
 //
 

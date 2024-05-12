@@ -9,9 +9,12 @@ import Foundation
 import Combine
 @testable import Clear_Test
 
+// This is used to Mock URLSession using the protocol created
 class URLSessionMock: URLSessionProtocol {
 
-    var jsonName = 
+    // This is the json string used to decode the data type with the status code
+    // MARK: - Variables
+    var jsonName =
 """
 {
     "accountIDVStatus": "PASS",
@@ -57,17 +60,16 @@ class URLSessionMock: URLSessionProtocol {
     "augmentedCreditScore": null
 }
 """
-
+    var statusCode = 200
+    
+    // MARK: - Mocked function
+    // Mocking the response function
     func response(for request: URLRequest) -> AnyPublisher<APIResponse, URLError> {
         let response = HTTPURLResponse(
             url: request.url!,
-            statusCode: 200,
+            statusCode: statusCode,
             httpVersion: "HTTP/1.1",
             headerFields: nil)!
-
-//        let file = Bundle(for: type(of: self)).path(forResource: jsonName, ofType: nil) ?? ""
-
-//        let url = URL(fileURLWithPath: file)
 
         guard let data = jsonName.data(using: .utf8) else {
             return Just((data: Data(), response: response))

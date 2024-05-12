@@ -10,18 +10,11 @@ import XCTest
 final class Clear_TestUITests: XCTestCase {
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
+    
+    // MARK: - UI Test functions
+    // This will check if we are able to access the credit report info in the details view
     func testCreditReportInfoPageAccess() throws {
         let device = XCUIDevice.shared
         device.orientation = .portrait
@@ -45,6 +38,7 @@ final class Clear_TestUITests: XCTestCase {
         XCTAssertTrue(clientReferenceValue.exists)
     }
     
+    // This will test when the API returns a data with credit report info missing
     func testNoCreditReportInfo() throws {
         let device = XCUIDevice.shared
         device.orientation = .portrait
@@ -62,6 +56,7 @@ final class Clear_TestUITests: XCTestCase {
         XCTAssertFalse(creditReportInfoButton.exists)
     }
     
+    // This will check if we are able to access the coaching summary access
     func testCoachingSummaryAccess() throws {
         let device = XCUIDevice.shared
         device.orientation = .portrait
@@ -83,6 +78,7 @@ final class Clear_TestUITests: XCTestCase {
         XCTAssertTrue(activeTODO.exists)
     }
     
+    // This will test when the API returns a data with coachingSummary missing
     func testNoCoachingSummary() throws {
         let device = XCUIDevice.shared
         device.orientation = .portrait
@@ -100,6 +96,7 @@ final class Clear_TestUITests: XCTestCase {
         XCTAssertFalse(coachingSummaryButton.exists)
     }
     
+    // This will test when we receive a bad URL error via stubbing the error
     func testErrorBadURL() throws {
         let device = XCUIDevice.shared
         device.orientation = .portrait
@@ -112,7 +109,8 @@ final class Clear_TestUITests: XCTestCase {
         let errorText = app.staticTexts["URL is invalid"]
         XCTAssertTrue(errorText.exists)
     }
-
+    
+    // This will test when we are unable to decode network correctly via stubbing the error
     func testErrorDecode() throws {
         let device = XCUIDevice.shared
         device.orientation = .portrait
@@ -126,6 +124,7 @@ final class Clear_TestUITests: XCTestCase {
         XCTAssertTrue(errorText.exists)
     }
     
+    // This will test when we receivevd a bad status code through the network error
     func testErrorResponseError() throws {
         let device = XCUIDevice.shared
         device.orientation = .portrait
@@ -139,6 +138,22 @@ final class Clear_TestUITests: XCTestCase {
         XCTAssertTrue(errorText.exists)
     }
     
+    // This will test when an unknown error occurs that is not part of NetworkError enums we created - I took some shortcut here.
+    func testErrorCustomError() throws {
+        let device = XCUIDevice.shared
+        device.orientation = .portrait
+        
+        let app = XCUIApplication()
+        
+        app.launchArguments = ["UITEST-customErrorDomain"]
+        app.launch()
+        sleep(1)
+        // Here I am testing for the bottom text as I could not come up with the text label composition aboce correctly
+        let errorText = app.staticTexts["Please contact developer @ josuecizungu@gmail.com"]
+        XCTAssertTrue(errorText.exists)
+    }
+    
+    // This will test When an unknown error occured and make sure the error messsage is displayed correctly
     func testErrorUnknown() throws {
         let device = XCUIDevice.shared
         device.orientation = .portrait
@@ -154,10 +169,6 @@ final class Clear_TestUITests: XCTestCase {
     
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-//            measure(metrics: [XCTApplicationLaunchMetric(waitUntilResponsive: true)]) {
-//                XCUIApplication().launch()
-//            }
             let device = XCUIDevice.shared
             device.orientation = .portrait
             let options = XCTMeasureOptions()

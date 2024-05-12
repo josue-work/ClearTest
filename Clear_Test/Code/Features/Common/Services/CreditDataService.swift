@@ -2,6 +2,9 @@
 //  CreditDataService.swift
 //  Clear_Test
 //
+//  This is our creditDataService used to make a request with URLSession item
+//  We make use of our URLSessionProtocol to allow us to mock URLSession for our testing
+//
 //  Created by Josue Muhiri Cizungu on 2024/05/12.
 //
 
@@ -12,7 +15,6 @@ class CreditDataService<T: URLSessionProtocol> {
     
     private var baseURL = "https://5lfoiyb0b3.execute-api.us-west-2.amazonaws.com/prod/"
 
-    
     let session: T
     init(session: T) {
         self.session = session

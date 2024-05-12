@@ -2,6 +2,10 @@
 //  CreditViewModel.swift
 //  Clear_Test
 //
+//  This is the creditViewModel
+//  It is used to load, store, and publish the data fetched from the provided endpoint
+//  It makes use of the created service to fetch the data
+//
 //  Created by Josue Muhiri Cizungu on 2024/05/12.
 //
 
@@ -25,7 +29,7 @@ class CreditViewModel<T: URLSessionProtocol>: ObservableObject {
     }
 }
 
-extension CreditViewModel: DashboardViewModelInterface, CreditReportInfoViewInterface, CoachingSummaryViewInterface {
+extension CreditViewModel: CreditViewModelInterface, CreditReportInfoViewInterface, CoachingSummaryViewInterface {
     
     // MARK: - Network calls
     // This function fetches the credit data information
@@ -58,8 +62,6 @@ extension CreditViewModel: DashboardViewModelInterface, CreditReportInfoViewInte
                     self?.coachingSummary = coachingSummary
                 }
                 self?.error = nil
-                // TODO: - Remove prints
-                print("Received data succesfully:\t\(String(describing: self?.creditData))")
             }
             .store(in: &cancellables)
     }
