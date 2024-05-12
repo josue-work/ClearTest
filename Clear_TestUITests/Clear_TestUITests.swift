@@ -22,18 +22,150 @@ final class Clear_TestUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
+    func testCreditReportInfoPageAccess() throws {
+        let device = XCUIDevice.shared
+        device.orientation = .portrait
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let app = XCUIApplication()
+        
+        app.launchArguments = ["UITEST"]
+        app.launch()
+        sleep(1)
+        let detailsButton = app.staticTexts["Your credit score is"]
+        XCTAssertTrue(detailsButton.exists)
+        detailsButton.tap()
+        sleep(1)
+        let creditReportInfoButton = app.staticTexts["Credit Report Info"]
+        XCTAssertTrue(creditReportInfoButton.exists)
+        creditReportInfoButton.tap()
+        sleep(1)
+        let clientReference = app.staticTexts["Client Reference:"]
+        XCTAssertTrue(clientReference.exists)
+        let clientReferenceValue = app.staticTexts["CS-SED-634897-708782"]
+        XCTAssertTrue(clientReferenceValue.exists)
+    }
+    
+    func testNoCreditReportInfo() throws {
+        let device = XCUIDevice.shared
+        device.orientation = .portrait
+
+        let app = XCUIApplication()
+        
+        app.launchArguments = ["UITEST-noCreditReportInfo"]
+        app.launch()
+        sleep(1)
+        let detailsButton = app.staticTexts["Your credit score is"]
+        XCTAssertTrue(detailsButton.exists)
+        detailsButton.tap()
+        sleep(1)
+        let creditReportInfoButton = app.staticTexts["Credit Report Info"]
+        XCTAssertFalse(creditReportInfoButton.exists)
+    }
+    
+    func testCoachingSummaryAccess() throws {
+        let device = XCUIDevice.shared
+        device.orientation = .portrait
+        
+        let app = XCUIApplication()
+        
+        app.launchArguments = ["UITEST"]
+        app.launch()
+        sleep(1)
+        let detailsButton = app.staticTexts["Your credit score is"]
+        XCTAssertTrue(detailsButton.exists)
+        detailsButton.tap()
+        sleep(1)
+        let coachingSummaryButton = app.staticTexts["Coaching Summary"]
+        XCTAssertTrue(coachingSummaryButton.exists)
+        coachingSummaryButton.tap()
+        sleep(2)
+        let activeTODO = app.staticTexts["Active TODO:"]
+        XCTAssertTrue(activeTODO.exists)
+    }
+    
+    func testNoCoachingSummary() throws {
+        let device = XCUIDevice.shared
+        device.orientation = .portrait
+        
+        let app = XCUIApplication()
+        
+        app.launchArguments = ["UITEST-noCoachingSummary"]
+        app.launch()
+        sleep(1)
+        let detailsButton = app.staticTexts["Your credit score is"]
+        XCTAssertTrue(detailsButton.exists)
+        detailsButton.tap()
+        sleep(1)
+        let coachingSummaryButton = app.staticTexts["Coaching Summary"]
+        XCTAssertFalse(coachingSummaryButton.exists)
+    }
+    
+    func testErrorBadURL() throws {
+        let device = XCUIDevice.shared
+        device.orientation = .portrait
+        
+        let app = XCUIApplication()
+        
+        app.launchArguments = ["UITEST-badURL"]
+        app.launch()
+        sleep(1)
+        let errorText = app.staticTexts["URL is invalid"]
+        XCTAssertTrue(errorText.exists)
     }
 
+    func testErrorDecode() throws {
+        let device = XCUIDevice.shared
+        device.orientation = .portrait
+        
+        let app = XCUIApplication()
+        
+        app.launchArguments = ["UITEST-decode"]
+        app.launch()
+        sleep(1)
+        let errorText = app.staticTexts["Unable to decode the response received"]
+        XCTAssertTrue(errorText.exists)
+    }
+    
+    func testErrorResponseError() throws {
+        let device = XCUIDevice.shared
+        device.orientation = .portrait
+        
+        let app = XCUIApplication()
+        
+        app.launchArguments = ["UITEST-reponseError"]
+        app.launch()
+        sleep(1)
+        let errorText = app.staticTexts["Network Error:\t"]
+        XCTAssertTrue(errorText.exists)
+    }
+    
+    func testErrorUnknown() throws {
+        let device = XCUIDevice.shared
+        device.orientation = .portrait
+        
+        let app = XCUIApplication()
+        
+        app.launchArguments = ["UITEST-unknown"]
+        app.launch()
+        sleep(1)
+        let errorText = app.staticTexts["Unknown Error"]
+        XCTAssertTrue(errorText.exists)
+    }
+    
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
             // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
+//            measure(metrics: [XCTApplicationLaunchMetric(waitUntilResponsive: true)]) {
+//                XCUIApplication().launch()
+//            }
+            let device = XCUIDevice.shared
+            device.orientation = .portrait
+            let options = XCTMeasureOptions()
+            options.iterationCount = 1
+
+            let launchMetric = XCTApplicationLaunchMetric(waitUntilResponsive: true)
+            measure(metrics: [launchMetric],
+                    options: options) {
                 XCUIApplication().launch()
             }
         }
