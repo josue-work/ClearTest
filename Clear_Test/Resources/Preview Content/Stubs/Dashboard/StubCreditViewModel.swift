@@ -10,34 +10,42 @@
 
 import Foundation
 
-class StubCreditViewModel: CreditViewModelInterface {
-    var error: Error? = NetworkError.responseError(StatusCode: 409)
-    var coachingSummary: CoachingSummaryModel?
-    var creditReportInfo: CreditReportInfoModel?
-    var creditScore: Int? = 327
-    var creditMaxScore: Int? = 700
-    var creditData: CreditModel?
+final class StubCreditViewModel: CreditViewModelInterface {
+    let error: Error?
+    let coachingSummary: CoachingSummaryModel?
+    let creditReportInfo: CreditReportInfoModel?
+    let creditScore: Int?
+    let creditMaxScore: Int?
+    let creditData: CreditModel?
+    
     func fetchCreditData() {}
     
-    func filldata() {
+    init() {
         creditData = StubCreditModel().creditData
         if let creditScore = creditData?.creditReportInfo?.score {
             self.creditScore = creditScore
+        } else {
+            self.creditScore = nil
         }
+        
         if let creditMaxScore = creditData?.creditReportInfo?.maxScoreValue {
             self.creditMaxScore = creditMaxScore
+        } else {
+            self.creditMaxScore = nil
         }
+        
         if let creditReportInfo = creditData?.creditReportInfo {
             self.creditReportInfo = creditReportInfo
+        } else {
+            self.creditReportInfo = nil
         }
+        
         if let coachingSummary = creditData?.coachingSummary {
             self.coachingSummary = coachingSummary
+        } else {
+            self.coachingSummary = nil
         }
         self.error = nil
-    }
-    
-    init() {
-        filldata()
     }
     
     init(error: Error) {
@@ -50,17 +58,43 @@ class StubCreditViewModel: CreditViewModelInterface {
     }
     
     init(emptyCreditReportInfo: Bool, emptyCoachingSummary: Bool) {
-        filldata()
+        var innerCreditData = StubCreditModel().creditData
+        
+        self.error = nil
+        
         if emptyCoachingSummary {
             self.coachingSummary = nil
-            self.creditData?.coachingSummary = nil
+            innerCreditData?.coachingSummary = nil
+        } else {
+            if let coachingSummary = innerCreditData?.coachingSummary {
+                self.coachingSummary = coachingSummary
+            } else {
+                self.coachingSummary = nil
+            }
         }
         
         if emptyCreditReportInfo {
             self.creditMaxScore = nil
             self.creditScore = nil
             self.creditReportInfo = nil
-            self.creditData?.creditReportInfo = nil
+            innerCreditData?.creditReportInfo = nil
+        } else {
+            if let creditScore = innerCreditData?.creditReportInfo?.score {
+                self.creditScore = creditScore
+            } else {
+                self.creditScore = nil
+            }
+            if let creditMaxScore = innerCreditData?.creditReportInfo?.maxScoreValue {
+                self.creditMaxScore = creditMaxScore
+            } else {
+                self.creditMaxScore = nil
+            }
+            if let creditReportInfo = innerCreditData?.creditReportInfo {
+                self.creditReportInfo = creditReportInfo
+            } else {
+                self.creditReportInfo = nil
+            }
         }
+        self.creditData = innerCreditData
     }
 }

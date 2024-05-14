@@ -10,7 +10,7 @@ import XCTest
 import Combine
 @testable import Clear_Test
 
-class CreditDataServiceTest: XCTestCase {
+final class CreditDataServiceTest: XCTestCase {
 
     // MARK: - Variables
     var urlSession: URLSessionMock?

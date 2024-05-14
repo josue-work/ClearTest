@@ -10,9 +10,10 @@
 
 import Foundation
 
-class StubErrorViewModel: ErrorInterface {
-    var error: Error? = NetworkError.badURL
-    init(_ error: Error? = nil) {
+final class StubErrorViewModel: ErrorInterface {
+    let error: Error?
+    
+    init(_ error: Error?) {
         self.error = error
     }
 }

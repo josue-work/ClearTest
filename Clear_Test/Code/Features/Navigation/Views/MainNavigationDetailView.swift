@@ -13,7 +13,7 @@ import SwiftUI
 struct MainNavigationDetailView<ViewModel: CreditViewModelInterface & CreditModelInterface>: View {
     
     // MARK: - Variables
-    @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject private var viewModel: ViewModel
     @Binding var selectedView: MainNavigationPaths?
     @State private var presentedPath = NavigationPath()
     

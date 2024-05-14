@@ -13,7 +13,7 @@ import SwiftUI
 struct DashboardView<ViewModel: CreditViewModelInterface>: View {
     
     // MARK: - Variables
-    @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject private var viewModel: ViewModel
     @Binding var selectedView: MainNavigationPaths?
     @State private var presentedPath = NavigationPath()
     
@@ -30,7 +30,6 @@ struct DashboardView<ViewModel: CreditViewModelInterface>: View {
                     .onTapGesture {
                         selectedView = .Details
                     }
-                    .tag("CircularView")
             }
         }
         .toolbar {

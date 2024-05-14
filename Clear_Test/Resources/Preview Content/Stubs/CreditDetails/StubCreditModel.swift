@@ -10,11 +10,11 @@
 
 import Foundation
 
-
-class StubCreditModel: CreditModelInterface {
-    var coachingSummary: CoachingSummaryModel?
-    var creditReportInfo: CreditReportInfoModel?
-    var creditData: CreditModel?
+final class StubCreditModel: CreditModelInterface {
+    let coachingSummary: CoachingSummaryModel?
+    let creditReportInfo: CreditReportInfoModel?
+    let creditData: CreditModel?
+    
     init() {
         self.coachingSummary = StubCoachingSummaryModel().coachingSummary
         self.creditReportInfo = StubCreditReportInfoModel().creditReportInfo

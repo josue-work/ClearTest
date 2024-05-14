@@ -10,7 +10,7 @@
 
 import Foundation
 
-class StubCircularViewModel: CircularViewInterface {
-    var creditScore: Int? = 327
-    var creditMaxScore: Int? = 700
+final class StubCircularViewModel: CircularViewInterface {
+    let creditScore: Int? = 327
+    let creditMaxScore: Int? = 700
 }

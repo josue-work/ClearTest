@@ -13,8 +13,8 @@ import SwiftUI
 struct CircularView<CircularViewDataModel: CircularViewInterface>: View {
     
     // MARK: - Variables
-    @EnvironmentObject var data: CircularViewDataModel
-    @State var size: CGFloat = 250
+    @EnvironmentObject private var data: CircularViewDataModel
+    @State private var size: CGFloat = 250
     
     // MARK: - Body view
     var body: some View {
@@ -24,32 +24,19 @@ struct CircularView<CircularViewDataModel: CircularViewInterface>: View {
                 .foregroundStyle(.primary)
                 .lineLimit(1)
                 .minimumScaleFactor(0.3)
-            if let score = data.creditScore?.description {
-                Text(score)
-                    .font(.largeTitle)
-                    .foregroundStyle(.yellow)
-                    .padding(.bottom, 3)
-                    .padding(.top, 3)
-            } else {
-                Text("---")
-                    .font(.largeTitle)
-                    .foregroundStyle(.yellow)
-                    .padding(.bottom, 3)
-                    .padding(.top, 3)
-            }
-            if let maxScore = data.creditMaxScore?.description {
-                Text(LocalizedStringKey("dashboard_title_part_two"))
-                    .bold()
-                    .foregroundStyle(.primary)
-                +
-                Text(" \(maxScore)")
-                    .bold()
-                    .foregroundStyle(.primary)
-            } else {
-                Text("---")
-                    .bold()
-                    .foregroundStyle(.primary)
-            }
+            Text("\(data.creditScore?.description ?? "---")")
+                .font(.largeTitle)
+                .foregroundStyle(.yellow)
+                .padding(.bottom, 3)
+                .padding(.top, 3)
+            
+            Text(LocalizedStringKey("dashboard_title_part_two"))
+                .bold()
+                .foregroundStyle(.primary)
+            +
+            Text(" \(data.creditMaxScore?.description ?? "---")")
+                .bold()
+                .foregroundStyle(.primary)
         }
         .contentShape(Circle())
         .overlay(

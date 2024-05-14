@@ -10,8 +10,9 @@
 
 import Foundation
 
-class StubCreditReportInfoModel: CreditReportInfoViewInterface {
-    var creditReportInfo: CreditReportInfoModel?
+final class StubCreditReportInfoModel: CreditReportInfoViewInterface {
+    let creditReportInfo: CreditReportInfoModel?
+    
     init() {
         self.creditReportInfo = CreditReportInfoModel(score: 414,
                                                       scoreBand: 5,

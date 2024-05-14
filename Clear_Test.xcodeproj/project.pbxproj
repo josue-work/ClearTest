@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA40C8692BF23C3C00369E62 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40C8682BF23C3C00369E62 /* Log.swift */; };
 		CA9DD78D2BF0D896002DCEA3 /* Clear_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9DD78C2BF0D896002DCEA3 /* Clear_TestApp.swift */; };
 		CA9DD78F2BF0D896002DCEA3 /* MainNavigationSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9DD78E2BF0D896002DCEA3 /* MainNavigationSplitView.swift */; };
 		CA9DD7912BF0D898002DCEA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA9DD7902BF0D898002DCEA3 /* Assets.xcassets */; };
@@ -68,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA40C8682BF23C3C00369E62 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		CA9DD7892BF0D896002DCEA3 /* Clear_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clear_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA9DD78C2BF0D896002DCEA3 /* Clear_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clear_TestApp.swift; sourceTree = "<group>"; };
 		CA9DD78E2BF0D896002DCEA3 /* MainNavigationSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationSplitView.swift; sourceTree = "<group>"; };
@@ -139,6 +141,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA40C8672BF23BEC00369E62 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CA40C8682BF23C3C00369E62 /* Log.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		CA9DD7802BF0D896002DCEA3 = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +247,7 @@
 		CA9DD7BA2BF0D949002DCEA3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CA40C8672BF23BEC00369E62 /* Classes */,
 				CA9DD7E32BF0DD1D002DCEA3 /* Extensions */,
 				CA9DD7BB2BF0D954002DCEA3 /* Enums */,
 			);
@@ -590,6 +601,7 @@
 				CA9DD8062BF0EBA0002DCEA3 /* DashboardView.swift in Sources */,
 				CA9DD7D42BF0DC08002DCEA3 /* CreditViewModel.swift in Sources */,
 				CA9DD7CD2BF0DBBB002DCEA3 /* CreditModel.swift in Sources */,
+				CA40C8692BF23C3C00369E62 /* Log.swift in Sources */,
 				CA9DD7BD2BF0D969002DCEA3 /* NavigationPaths.swift in Sources */,
 				CA9DD80C2BF0F65E002DCEA3 /* CreditDetailView.swift in Sources */,
 				CA9DD7EF2BF0DF9F002DCEA3 /* StubCreditReportInfoModel.swift in Sources */,

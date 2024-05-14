@@ -9,8 +9,6 @@ import Foundation
 import Combine
 
 protocol URLSessionProtocol {
-
     typealias APIResponse = URLSession.DataTaskPublisher.Output
     func response(for request: URLRequest) -> AnyPublisher<APIResponse, URLError>
-
 }

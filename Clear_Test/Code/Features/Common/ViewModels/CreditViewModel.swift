@@ -12,7 +12,7 @@
 import Foundation
 import Combine
 
-class CreditViewModel<T: URLSessionProtocol>: ObservableObject {
+final class CreditViewModel<T: URLSessionProtocol>: ObservableObject {
     
     // MARK: - Variable
     private var cancellables = Set<AnyCancellable>()
@@ -22,7 +22,8 @@ class CreditViewModel<T: URLSessionProtocol>: ObservableObject {
     @Published var creditReportInfo: CreditReportInfoModel?
     @Published var coachingSummary: CoachingSummaryModel?
     @Published var error: Error?
-    var creditDataService: CreditDataService<T>
+    private let creditDataService: CreditDataService<T>
+    
     
     init(creditDataService: CreditDataService<T>) {
         self.creditDataService = creditDataService
@@ -41,11 +42,11 @@ extension CreditViewModel: CreditViewModelInterface, CreditReportInfoViewInterfa
             .sink { [weak self] completion in
                 
                 switch completion {
-                case .failure(let err):
-                    print("Error is \(err.localizedDescription)")
-                    self?.error = err
+                case .failure(let error):
+                    self?.error = error
+                    Log<CreditViewModel>.logger.trace("Error is \(error.localizedDescription)")
                 case .finished:
-                    print("Finished")
+                    Log<CreditViewModel>.logger.trace("Finished")
                 }
             } receiveValue: { [weak self] creditData in
                 self?.creditData = creditData

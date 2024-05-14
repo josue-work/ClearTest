@@ -13,9 +13,9 @@ struct CreditDetailView<CreditDataModel: CreditModelInterface & CreditReportInfo
     
     
     // MARK: - Variables
-    @EnvironmentObject var data: CreditDataModel
+    @EnvironmentObject private var data: CreditDataModel
     @Binding var selectedView: MainNavigationPaths?
-    @State private var presentedPath = NavigationPath()
+    @State private var presentedPath: NavigationPath = NavigationPath()
     
     // MARK: - Body View
     var body: some View {

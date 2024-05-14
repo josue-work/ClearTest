@@ -13,7 +13,7 @@ struct MainNavigationSplitView<ViewModel: CreditViewModelInterface>: View {
     
     // MARK: - Variable
     @ObservedObject var viewModel: ViewModel
-    @State private var visibility: NavigationSplitViewVisibility = .all
+    @State private var visibility: NavigationSplitViewVisibility = .detailOnly
     @State private var selectedView: MainNavigationPaths? = .Home
     
     // MARK: - Body view

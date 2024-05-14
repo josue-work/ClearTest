@@ -13,7 +13,7 @@ import SwiftUI
 struct CreditReportInfoView<CreditReportData: CreditReportInfoViewInterface>: View {
     
     // MARK: - Variables
-    @EnvironmentObject var data: CreditReportData
+    @EnvironmentObject private var data: CreditReportData
     
     // MARK: - Body View
     var body: some View {
@@ -111,7 +111,7 @@ struct CreditReportInfoView<CreditReportData: CreditReportInfoViewInterface>: Vi
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Text(LocalizedStringKey("dashboard_title"))
+                Text(LocalizedStringKey("credit_report_info"))
                     .foregroundColor(.white)
             }
         }

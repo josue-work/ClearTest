@@ -11,25 +11,20 @@
 import Foundation
 import Combine
 
-class CreditDataService<T: URLSessionProtocol> {
+final class CreditDataService<T: URLSessionProtocol> {
     
-    private var baseURL = "https://5lfoiyb0b3.execute-api.us-west-2.amazonaws.com/prod/"
+    private let baseURL: String
+    private let session: T
 
-    let session: T
-    init(session: T) {
-        self.session = session
-    }
-    
-    // Use only for testing
-    init(baseURL: String, session: T) {
+    init(baseURL: String = "https://5lfoiyb0b3.execute-api.us-west-2.amazonaws.com/prod/", session: T) {
         self.baseURL = baseURL
         self.session = session
     }
     
-    func get<S: Decodable>(ForEndpoint endpoint: NetworkEndpoints, WithDataType: S.Type) -> AnyPublisher<S, NetworkError> {
+    func get<APIResponse: Decodable>(ForEndpoint endpoint: NetworkEndpoints, WithDataType: APIResponse.Type) -> AnyPublisher<APIResponse, NetworkError> {
         guard !baseURL.isEmpty,
                 let url = URL(string: self.baseURL.appending(endpoint.rawValue)) else {
-            return Fail(outputType: S.self, failure: NetworkError.badURL).eraseToAnyPublisher()
+            return Fail(outputType: APIResponse.self, failure: NetworkError.badURL).eraseToAnyPublisher()
         }
         let request = URLRequest(url: url)
         
@@ -39,7 +34,7 @@ class CreditDataService<T: URLSessionProtocol> {
             }
             .flatMap { output in
                 return Just(output.data)
-                    .decode(type: S.self, decoder: JSONDecoder())
+                    .decode(type: APIResponse.self, decoder: JSONDecoder())
                     .mapError { _ in
                         NetworkError.decode
                     }

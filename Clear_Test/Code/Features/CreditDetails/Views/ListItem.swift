@@ -12,8 +12,13 @@ import SwiftUI
 struct ListItem: View {
     
     // MARK: - Variables
-    @State var keyString: String = "---"
-    @State var valueString: String = "---"
+    @State private var keyString: String
+    @State private var valueString: String
+    
+    init(keyString: String, valueString: String) {
+        self.keyString = keyString
+        self.valueString = valueString
+    }
     
     // MARK: - Body View
     var body: some View {
@@ -28,5 +33,5 @@ struct ListItem: View {
 }
 
 #Preview {
-    ListItem()
+    ListItem(keyString: "---", valueString: "---")
 }

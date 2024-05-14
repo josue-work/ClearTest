@@ -10,7 +10,7 @@ import Combine
 @testable import Clear_Test
 
 // This is used to Mock URLSession using the protocol created
-class URLSessionMock: URLSessionProtocol {
+final class URLSessionMock: URLSessionProtocol {
 
     // This is the json string used to decode the data type with the status code
     // MARK: - Variables

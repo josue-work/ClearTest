@@ -10,8 +10,9 @@
 
 import Foundation
 
-class StubCoachingSummaryModel: CoachingSummaryViewInterface {
-    var coachingSummary: CoachingSummaryModel?
+final class StubCoachingSummaryModel: CoachingSummaryViewInterface {
+    let coachingSummary: CoachingSummaryModel?
+    
     init() {
         self.coachingSummary = CoachingSummaryModel(activeTodo: false,
                                                     activeChat: true,
