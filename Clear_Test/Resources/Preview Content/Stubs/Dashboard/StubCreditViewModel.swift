@@ -9,6 +9,7 @@
 //
 
 import Foundation
+import Combine
 
 final class StubCreditViewModel: CreditViewModelInterface {
     let error: Error?
@@ -18,7 +19,9 @@ final class StubCreditViewModel: CreditViewModelInterface {
     let creditMaxScore: Int?
     let creditData: CreditModel?
     
-    func fetchCreditData() {}
+    func fetchCreditData() -> AnyPublisher<CreditModel, NetworkError>? {
+        return nil
+    }
     
     init() {
         creditData = StubCreditModel().creditData
@@ -54,7 +57,8 @@ final class StubCreditViewModel: CreditViewModelInterface {
         self.coachingSummary = nil
         self.creditReportInfo = nil
         self.creditData = nil
-        self.error = error
+        let stubError = StubErrorViewModel(error)
+        self.error = stubError.error
     }
     
     init(emptyCreditReportInfo: Bool, emptyCoachingSummary: Bool) {

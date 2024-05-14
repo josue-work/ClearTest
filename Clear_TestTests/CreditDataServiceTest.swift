@@ -75,8 +75,8 @@ final class CreditDataServiceTest: XCTestCase {
         response = creditDataService?.get(ForEndpoint: .creditReportDetails, WithDataType: CreditModel.self)
             .receive(on: DispatchQueue.main)
         let expectation = self.expectation(description: "Test Failure Responses")
-        publisher = response?.sink(receiveCompletion: { creditError in
-            switch creditError {
+        publisher = response?.sink(receiveCompletion: { completion in
+            switch completion {
             case .finished: break
             case .failure(let error):
                 XCTAssertEqual(error, .decode)
@@ -97,8 +97,8 @@ final class CreditDataServiceTest: XCTestCase {
         response = creditDataService?.get(ForEndpoint: .creditReportDetails, WithDataType: CreditModel.self)
             .receive(on: DispatchQueue.main)
         let expectation = self.expectation(description: "Test Failure Responses")
-        publisher = response?.sink(receiveCompletion: { creditError in
-            switch creditError {
+        publisher = response?.sink(receiveCompletion: { completion in
+            switch completion {
             case .finished: break
             case .failure(let error):
                 XCTAssertEqual(error, .badURL)

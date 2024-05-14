@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		CA40C8692BF23C3C00369E62 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40C8682BF23C3C00369E62 /* Log.swift */; };
+		CA40C86B2BF3653E00369E62 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CA40C86A2BF3653E00369E62 /* README.md */; };
+		CA40C86D2BF371F600369E62 /* StubTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40C86C2BF371F600369E62 /* StubTest.swift */; };
+		CA40C86F2BF3749300369E62 /* ViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40C86E2BF3749300369E62 /* ViewModelTest.swift */; };
 		CA9DD78D2BF0D896002DCEA3 /* Clear_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9DD78C2BF0D896002DCEA3 /* Clear_TestApp.swift */; };
 		CA9DD78F2BF0D896002DCEA3 /* MainNavigationSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9DD78E2BF0D896002DCEA3 /* MainNavigationSplitView.swift */; };
 		CA9DD7912BF0D898002DCEA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA9DD7902BF0D898002DCEA3 /* Assets.xcassets */; };
@@ -70,6 +73,9 @@
 
 /* Begin PBXFileReference section */
 		CA40C8682BF23C3C00369E62 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		CA40C86A2BF3653E00369E62 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		CA40C86C2BF371F600369E62 /* StubTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubTest.swift; sourceTree = "<group>"; };
+		CA40C86E2BF3749300369E62 /* ViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTest.swift; sourceTree = "<group>"; };
 		CA9DD7892BF0D896002DCEA3 /* Clear_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clear_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA9DD78C2BF0D896002DCEA3 /* Clear_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clear_TestApp.swift; sourceTree = "<group>"; };
 		CA9DD78E2BF0D896002DCEA3 /* MainNavigationSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationSplitView.swift; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 		CA9DD7802BF0D896002DCEA3 = {
 			isa = PBXGroup;
 			children = (
+				CA40C86A2BF3653E00369E62 /* README.md */,
 				CA9DD78B2BF0D896002DCEA3 /* Clear_Test */,
 				CA9DD79C2BF0D898002DCEA3 /* Clear_TestTests */,
 				CA9DD7A62BF0D898002DCEA3 /* Clear_TestUITests */,
@@ -192,6 +199,8 @@
 			children = (
 				CA9DD8162BF12594002DCEA3 /* Mock */,
 				CA9DD8192BF127D8002DCEA3 /* CreditDataServiceTest.swift */,
+				CA40C86C2BF371F600369E62 /* StubTest.swift */,
+				CA40C86E2BF3749300369E62 /* ViewModelTest.swift */,
 			);
 			path = Clear_TestTests;
 			sourceTree = "<group>";
@@ -554,6 +563,7 @@
 			files = (
 				CA9DD7942BF0D898002DCEA3 /* Preview Assets.xcassets in Resources */,
 				CA9DD7912BF0D898002DCEA3 /* Assets.xcassets in Resources */,
+				CA40C86B2BF3653E00369E62 /* README.md in Resources */,
 				CA9DD8042BF0EAF7002DCEA3 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -621,7 +631,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA40C86D2BF371F600369E62 /* StubTest.swift in Sources */,
 				CA9DD8182BF125A1002DCEA3 /* URLSessionMock.swift in Sources */,
+				CA40C86F2BF3749300369E62 /* ViewModelTest.swift in Sources */,
 				CA9DD81A2BF127D8002DCEA3 /* CreditDataServiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

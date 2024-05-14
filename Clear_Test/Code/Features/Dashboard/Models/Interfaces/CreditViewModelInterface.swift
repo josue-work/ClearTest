@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import Combine
 
 protocol CreditViewModelInterface: CircularViewInterface, CreditModelInterface, ErrorInterface {
-    func fetchCreditData()
+    func fetchCreditData() -> AnyPublisher<CreditModel, NetworkError>?
 }

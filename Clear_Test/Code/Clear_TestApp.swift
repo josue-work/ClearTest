@@ -10,6 +10,12 @@ import SwiftUI
 @main
 struct Clear_TestApp: App {
     
+    init() {
+        if ProcessInfo.processInfo.environment["DISABLE_ANIMATIONS"] == "1" {
+            UIView.setAnimationsEnabled(false)
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
             // We decided to use the app arguments that we add before running the UITest to stub values for each specific tests.

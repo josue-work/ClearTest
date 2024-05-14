@@ -26,7 +26,7 @@ struct MainNavigationSplitView<ViewModel: CreditViewModelInterface>: View {
         }
         .navigationSplitViewStyle(.balanced)
         .onAppear {
-            viewModel.fetchCreditData()
+            _ = viewModel.fetchCreditData()
         }
     }
 }

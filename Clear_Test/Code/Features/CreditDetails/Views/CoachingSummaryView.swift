@@ -40,6 +40,13 @@ struct CoachingSummaryView<CoachingSummaryData: CoachingSummaryViewInterface>: V
                 Text(String(localized: "no_data"))
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text(LocalizedStringKey("coaching_summary"))
+                    .foregroundColor(.white)
+            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

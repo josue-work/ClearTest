@@ -34,36 +34,45 @@ extension CreditViewModel: CreditViewModelInterface, CreditReportInfoViewInterfa
     
     // MARK: - Network calls
     // This function fetches the credit data information
-    func fetchCreditData() {
+    func fetchCreditData() -> AnyPublisher<CreditModel, NetworkError>? {
         
         let response = creditDataService.get(ForEndpoint: .creditReportDetails, WithDataType: CreditModel.self)
         response
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
-                
-                switch completion {
-                case .failure(let error):
-                    self?.error = error
-                    Log<CreditViewModel>.logger.trace("Error is \(error.localizedDescription)")
-                case .finished:
-                    Log<CreditViewModel>.logger.trace("Finished")
-                }
+                self?.fillError(completion: completion)
             } receiveValue: { [weak self] creditData in
-                self?.creditData = creditData
-                if let creditScore = creditData.creditReportInfo?.score {
-                    self?.creditScore = creditScore
-                }
-                if let creditMaxScore = creditData.creditReportInfo?.maxScoreValue {
-                    self?.creditMaxScore = creditMaxScore
-                }
-                if let creditReportInfo = creditData.creditReportInfo {
-                    self?.creditReportInfo = creditReportInfo
-                }
-                if let coachingSummary = creditData.coachingSummary {
-                    self?.coachingSummary = coachingSummary
-                }
-                self?.error = nil
+                self?.fillData(creditData: creditData)
             }
             .store(in: &cancellables)
+        
+        return response
+    }
+    
+    func fillError(completion: Subscribers.Completion<NetworkError>) {
+        switch completion {
+        case .failure(let error):
+            self.error = error
+            Log<CreditViewModel>.logger.trace("Error is \(error.localizedDescription)")
+        case .finished:
+            Log<CreditViewModel>.logger.trace("Finished")
+        }
+    }
+    
+    func fillData(creditData: CreditModel) {
+        self.creditData = creditData
+        if let creditScore = creditData.creditReportInfo?.score {
+            self.creditScore = creditScore
+        }
+        if let creditMaxScore = creditData.creditReportInfo?.maxScoreValue {
+            self.creditMaxScore = creditMaxScore
+        }
+        if let creditReportInfo = creditData.creditReportInfo {
+            self.creditReportInfo = creditReportInfo
+        }
+        if let coachingSummary = creditData.coachingSummary {
+            self.coachingSummary = coachingSummary
+        }
+        self.error = nil
     }
 }

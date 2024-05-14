@@ -9,17 +9,28 @@ import XCTest
 
 final class Clear_TestUITests: XCTestCase {
 
+    var app: XCUIApplication!
+    
     override func setUpWithError() throws {
         continueAfterFailure = false
+    }
+    
+    override func setUp() {
+        super.setUp()
+        let device = XCUIDevice.shared
+        device.orientation = .portrait
+
+        app = XCUIApplication()
+        app.launchEnvironment = ["DISABLE_ANIMATIONS": "1"]
+    }
+    
+    override func tearDown() {
+        app = nil
     }
     
     // MARK: - UI Test functions
     // This will check if we are able to access the credit report info in the details view
     func testCreditReportInfoPageAccess() throws {
-        let device = XCUIDevice.shared
-        device.orientation = .portrait
-
-        let app = XCUIApplication()
         
         app.launchArguments = ["UITEST"]
         app.launch()
@@ -40,10 +51,6 @@ final class Clear_TestUITests: XCTestCase {
     
     // This will test when the API returns a data with credit report info missing
     func testNoCreditReportInfo() throws {
-        let device = XCUIDevice.shared
-        device.orientation = .portrait
-
-        let app = XCUIApplication()
         
         app.launchArguments = ["UITEST-noCreditReportInfo"]
         app.launch()
@@ -58,10 +65,6 @@ final class Clear_TestUITests: XCTestCase {
     
     // This will check if we are able to access the coaching summary access
     func testCoachingSummaryAccess() throws {
-        let device = XCUIDevice.shared
-        device.orientation = .portrait
-        
-        let app = XCUIApplication()
         
         app.launchArguments = ["UITEST"]
         app.launch()
@@ -80,10 +83,6 @@ final class Clear_TestUITests: XCTestCase {
     
     // This will test when the API returns a data with coachingSummary missing
     func testNoCoachingSummary() throws {
-        let device = XCUIDevice.shared
-        device.orientation = .portrait
-        
-        let app = XCUIApplication()
         
         app.launchArguments = ["UITEST-noCoachingSummary"]
         app.launch()
@@ -98,10 +97,6 @@ final class Clear_TestUITests: XCTestCase {
     
     // This will test when we receive a bad URL error via stubbing the error
     func testErrorBadURL() throws {
-        let device = XCUIDevice.shared
-        device.orientation = .portrait
-        
-        let app = XCUIApplication()
         
         app.launchArguments = ["UITEST-badURL"]
         app.launch()
@@ -112,10 +107,6 @@ final class Clear_TestUITests: XCTestCase {
     
     // This will test when we are unable to decode network correctly via stubbing the error
     func testErrorDecode() throws {
-        let device = XCUIDevice.shared
-        device.orientation = .portrait
-        
-        let app = XCUIApplication()
         
         app.launchArguments = ["UITEST-decode"]
         app.launch()
@@ -126,10 +117,6 @@ final class Clear_TestUITests: XCTestCase {
     
     // This will test when we receivevd a bad status code through the network error
     func testErrorResponseError() throws {
-        let device = XCUIDevice.shared
-        device.orientation = .portrait
-        
-        let app = XCUIApplication()
         
         app.launchArguments = ["UITEST-reponseError"]
         app.launch()
@@ -140,10 +127,6 @@ final class Clear_TestUITests: XCTestCase {
     
     // This will test when an unknown error occurs that is not part of NetworkError enums we created - I took some shortcut here.
     func testErrorCustomError() throws {
-        let device = XCUIDevice.shared
-        device.orientation = .portrait
-        
-        let app = XCUIApplication()
         
         app.launchArguments = ["UITEST-customErrorDomain"]
         app.launch()
@@ -155,10 +138,6 @@ final class Clear_TestUITests: XCTestCase {
     
     // This will test When an unknown error occured and make sure the error messsage is displayed correctly
     func testErrorUnknown() throws {
-        let device = XCUIDevice.shared
-        device.orientation = .portrait
-        
-        let app = XCUIApplication()
         
         app.launchArguments = ["UITEST-unknown"]
         app.launch()
@@ -169,15 +148,14 @@ final class Clear_TestUITests: XCTestCase {
     
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            let device = XCUIDevice.shared
-            device.orientation = .portrait
+            
             let options = XCTMeasureOptions()
             options.iterationCount = 1
 
             let launchMetric = XCTApplicationLaunchMetric(waitUntilResponsive: true)
             measure(metrics: [launchMetric],
                     options: options) {
-                XCUIApplication().launch()
+                app.launch()
             }
         }
     }
