@@ -76,6 +76,9 @@
 		CA40C86A2BF3653E00369E62 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CA40C86C2BF371F600369E62 /* StubTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubTest.swift; sourceTree = "<group>"; };
 		CA40C86E2BF3749300369E62 /* ViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTest.swift; sourceTree = "<group>"; };
+		CA40C8702BF3A90D00369E62 /* Clear-Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Clear-Test-Info.plist"; sourceTree = SOURCE_ROOT; };
+		CA40C8712BF3A9C500369E62 /* Clear-TestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Clear-TestTests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		CA40C8722BF3A9D200369E62 /* Clear-TestUITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Clear-TestUITests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CA9DD7892BF0D896002DCEA3 /* Clear_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clear_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA9DD78C2BF0D896002DCEA3 /* Clear_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clear_TestApp.swift; sourceTree = "<group>"; };
 		CA9DD78E2BF0D896002DCEA3 /* MainNavigationSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationSplitView.swift; sourceTree = "<group>"; };
@@ -179,6 +182,7 @@
 		CA9DD78B2BF0D896002DCEA3 /* Clear_Test */ = {
 			isa = PBXGroup;
 			children = (
+				CA40C8702BF3A90D00369E62 /* Clear-Test-Info.plist */,
 				CA9DD7B72BF0D918002DCEA3 /* Code */,
 				CA9DD7B62BF0D8A8002DCEA3 /* Resources */,
 			);
@@ -197,6 +201,7 @@
 		CA9DD79C2BF0D898002DCEA3 /* Clear_TestTests */ = {
 			isa = PBXGroup;
 			children = (
+				CA40C8712BF3A9C500369E62 /* Clear-TestTests-Info.plist */,
 				CA9DD8162BF12594002DCEA3 /* Mock */,
 				CA9DD8192BF127D8002DCEA3 /* CreditDataServiceTest.swift */,
 				CA40C86C2BF371F600369E62 /* StubTest.swift */,
@@ -208,6 +213,7 @@
 		CA9DD7A62BF0D898002DCEA3 /* Clear_TestUITests */ = {
 			isa = PBXGroup;
 			children = (
+				CA40C8722BF3A9D200369E62 /* Clear-TestUITests-Info.plist */,
 				CA9DD7A72BF0D898002DCEA3 /* Clear_TestUITests.swift */,
 				CA9DD7A92BF0D898002DCEA3 /* Clear_TestUITestsLaunchTests.swift */,
 			);
@@ -793,6 +799,7 @@
 				DEVELOPMENT_TEAM = YNTCVVR39C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Clear-Test-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -822,6 +829,7 @@
 				DEVELOPMENT_TEAM = YNTCVVR39C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Clear-Test-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -849,6 +857,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YNTCVVR39C;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Clear-TestTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "app.clearscore.org.Clear-TestTests";
@@ -869,6 +878,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YNTCVVR39C;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Clear-TestTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "app.clearscore.org.Clear-TestTests";
@@ -888,6 +898,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YNTCVVR39C;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Clear-TestUITests-Info.plist";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "app.clearscore.org.Clear-TestUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -906,6 +917,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YNTCVVR39C;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Clear-TestUITests-Info.plist";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "app.clearscore.org.Clear-TestUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";

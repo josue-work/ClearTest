@@ -16,7 +16,7 @@ final class CreditDataService<T: URLSessionProtocol> {
     private let baseURL: String
     private let session: T
 
-    init(baseURL: String = "https://5lfoiyb0b3.execute-api.us-west-2.amazonaws.com/prod/", session: T) {
+    init(baseURL: String = Bundle.main.object(forInfoDictionaryKey: "BaseURLString") as? String ?? "", session: T) {
         self.baseURL = baseURL
         self.session = session
     }
