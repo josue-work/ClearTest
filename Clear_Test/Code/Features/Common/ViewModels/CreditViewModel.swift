@@ -53,9 +53,10 @@ extension CreditViewModel: CreditViewModelInterface, CreditReportInfoViewInterfa
         switch completion {
         case .failure(let error):
             self.error = error
-            Log<CreditViewModel>.logger.trace("Error is \(error.localizedDescription)")
+//            Log<CreditViewModel>.logger.trace("Error is \(error.localizedDescription)")
         case .finished:
-            Log<CreditViewModel>.logger.trace("Finished")
+//            Log<CreditViewModel>.logger.trace("Finished")
+            break
         }
     }
     
